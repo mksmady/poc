@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+  Kaleo definition for PartnerApplication (US-003, US-004). Skeleton: build plan step 6 completes it.
+  Each task transition must call partner-service (workflowAction client extension
+  "partner-workflow-action-review") so StatusService performs the status change.
+  Confirm how the target DXP version attaches a workflowAction client extension to a node and
+  record it in docs/open-questions.md.
+-->
+<workflow-definition
+	xmlns="urn:liferay.com:liferay-workflow_7.4.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:liferay.com:liferay-workflow_7.4.0 http://www.liferay.com/dtd/liferay-workflow-definition_7_4_0.xsd">
+	<name>partner-application</name>
+	<description>Account manager review, legal review and contract for partner applications.</description>
+	<version>1</version>
+	<state>
+		<name>submitted</name>
+		<initial>true</initial>
+		<transitions>
+			<transition><name>to-am-review</name><target>am-review</target><default>true</default></transition>
+			<transition><name>to-legal-review</name><target>legal-review</target><default>false</default></transition>
+		</transitions>
+	</state>
+	<task>
+		<name>am-review</name>
+		<description>Account manager reviews the application.</description>
+		<assignments><!-- assigned AM from PartnerApplication.assignedAM (resource action or script) --></assignments>
+		<transitions>
+			<transition><name>approve</name><target>legal-review</target><default>true</default></transition>
+			<transition><name>approve-existing-company</name><target>approved</target><default>false</default></transition>
+			<transition><name>request-revision</name><target>revision</target><default>false</default></transition>
+		</transitions>
+	</task>
+	<task>
+		<name>legal-review</name>
+		<description>Legal reviews the application.</description>
+		<assignments><roles><role><role-type>regular</role-type><name>Partner Legal</name></role></roles></assignments>
+		<transitions>
+			<transition><name>approve</name><target>contract-pending</target><default>true</default></transition>
+			<transition><name>request-revision</name><target>revision</target><default>false</default></transition>
+			<transition><name>reject</name><target>rejected</target><default>false</default></transition>
+		</transitions>
+	</task>
+	<task>
+		<name>contract-pending</name>
+		<description>Waiting for the signed contract.</description>
+		<assignments><roles><role><role-type>regular</role-type><name>Partner Legal</name></role></roles></assignments>
+		<transitions>
+			<transition><name>contract-signed</name><target>approved</target><default>true</default></transition>
+			<transition><name>terminate</name><target>terminated</target><default>false</default></transition>
+		</transitions>
+	</task>
+	<state><name>revision</name><!-- ends this workflow instance; resubmission starts a new one --></state>
+	<state><name>approved</name></state>
+	<state><name>rejected</name></state>
+	<state><name>terminated</name></state>
+</workflow-definition>

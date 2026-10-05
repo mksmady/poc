@@ -1,0 +1,18 @@
+assemble:
+  - from: build/static
+    into: static
+
+partner-admin-ui:
+  cssURLs:
+    - css/main.*.css
+  friendlyURLMapping: partner-admin
+  htmlElementName: partner-admin-ui
+  instanceable: false
+  name: Partner Admin
+  portletCategoryName: category.client-extensions
+  properties:
+    view: invitations
+  type: customElement
+  urls:
+    - js/main.*.js
+  useESM: true

@@ -1,0 +1,38 @@
+/* Clay classes come from the portal theme; only layout tweaks here. */
+
+.partner-admin-ui .pa-toolbar {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.partner-admin-ui .pa-search {
+	display: flex;
+	gap: 0.5rem;
+	max-width: 28rem;
+	width: 100%;
+}
+
+.partner-admin-ui .pa-tabs {
+	margin-bottom: 1rem;
+	overflow-x: auto;
+}
+
+.partner-admin-ui .pa-form-row {
+	display: grid;
+	gap: 0 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.partner-admin-ui .pa-empty {
+	padding: 2rem 0;
+	text-align: center;
+}
+
+.partner-admin-ui td.pa-nowrap,
+.partner-admin-ui th.pa-nowrap {
+	white-space: nowrap;
+}

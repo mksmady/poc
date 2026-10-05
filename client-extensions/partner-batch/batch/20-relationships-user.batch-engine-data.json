@@ -1,0 +1,69 @@
+{
+	"configuration": {
+		"className": "com.liferay.object.admin.rest.dto.v1_0.ObjectRelationship",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "INSERT",
+			"externalReferenceCode": "L_USER",
+			"importStrategy": "ON_ERROR_CONTINUE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"deletionType": "disassociate",
+			"externalReferenceCode": "PM_REL_USER_STATUS_HISTORY",
+			"label": {
+				"en_US": "Actor"
+			},
+			"name": "statusHistoryActor",
+			"objectDefinitionExternalReferenceCode1": "L_USER",
+			"objectDefinitionExternalReferenceCode2": "PM_OBJ_STATUS_HISTORY",
+			"type": "oneToMany"
+		},
+		{
+			"deletionType": "disassociate",
+			"externalReferenceCode": "PM_REL_USER_COMMENT",
+			"label": {
+				"en_US": "Author"
+			},
+			"name": "reviewCommentAuthor",
+			"objectDefinitionExternalReferenceCode1": "L_USER",
+			"objectDefinitionExternalReferenceCode2": "PM_OBJ_COMMENT",
+			"type": "oneToMany"
+		},
+		{
+			"deletionType": "disassociate",
+			"externalReferenceCode": "PM_REL_USER_APPLICATION_AM",
+			"label": {
+				"en_US": "Assigned AM"
+			},
+			"name": "applicationAssignedAM",
+			"objectDefinitionExternalReferenceCode1": "L_USER",
+			"objectDefinitionExternalReferenceCode2": "PM_OBJ_APPLICATION",
+			"type": "oneToMany"
+		},
+		{
+			"deletionType": "disassociate",
+			"externalReferenceCode": "PM_REL_USER_APPLICATION_LEGAL",
+			"label": {
+				"en_US": "Legal Reviewer"
+			},
+			"name": "applicationLegalReviewer",
+			"objectDefinitionExternalReferenceCode1": "L_USER",
+			"objectDefinitionExternalReferenceCode2": "PM_OBJ_APPLICATION",
+			"type": "oneToMany"
+		},
+		{
+			"deletionType": "disassociate",
+			"externalReferenceCode": "PM_REL_USER_INVITATION",
+			"label": {
+				"en_US": "Invited By"
+			},
+			"name": "invitationInvitedBy",
+			"objectDefinitionExternalReferenceCode1": "L_USER",
+			"objectDefinitionExternalReferenceCode2": "PM_OBJ_INVITATION",
+			"type": "oneToMany"
+		}
+	]
+}

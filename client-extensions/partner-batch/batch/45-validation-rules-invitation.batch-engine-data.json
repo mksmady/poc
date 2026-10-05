@@ -1,0 +1,38 @@
+{
+	"configuration": {
+		"className": "com.liferay.object.admin.rest.dto.v1_0.ObjectValidationRule",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "INSERT",
+			"externalReferenceCode": "PM_OBJ_INVITATION",
+			"importStrategy": "ON_ERROR_CONTINUE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"active": true,
+			"engine": "groovy",
+			"errorLabel": {
+				"en_US": "An active invitation already exists for this email"
+			},
+			"externalReferenceCode": "PM_VAL_INVITATION_ACTIVE_UNIQUE",
+			"name": {
+				"en_US": "Active invitation unique per email"
+			},
+			"script": "// Validation PM_VAL_INVITATION_ACTIVE_UNIQUE on PM_OBJ_INVITATION (US-001 AC2):\n// at most one active invitation per email, compared without case.\n// Liferay refuses the save when validationCriteriaMet is false.\n\nimport com.liferay.portal.kernel.module.util.SystemBundleUtil\n\ndef service = { String name ->\n\tdef bundleContext = SystemBundleUtil.getBundleContext()\n\n\tbundleContext.getService(bundleContext.getServiceReference(name))\n}\n\nvalidationCriteriaMet = true\n\nif ((state != \"active\") || !email) {\n\treturn\n}\n\ndef objectDefinitionLocalService = service(\"com.liferay.object.service.ObjectDefinitionLocalService\")\ndef objectEntryLocalService = service(\"com.liferay.object.service.ObjectEntryLocalService\")\n\nlong companyId = com.liferay.portal.kernel.util.PortalUtil.getDefaultCompanyId()\nlong definitionId = objectDefinitionLocalService.getObjectDefinitionByExternalReferenceCode(\"PM_OBJ_INVITATION\", companyId).getObjectDefinitionId()\nString normalized = email.trim().toLowerCase(Locale.ROOT)\nlong self = (binding.variables.id ?: 0L) as long\n\nvalidationCriteriaMet = !objectEntryLocalService.getObjectEntries(0L, definitionId, -1, -1).any {\n\tif (it.getObjectEntryId() == self) {\n\t\treturn false\n\t}\n\n\tdef other = objectEntryLocalService.getValues(it)\n\n\t(other.state == \"active\") && (String.valueOf(other.email).trim().toLowerCase(Locale.ROOT) == normalized)\n}\n"
+		},
+		{
+			"active": true,
+			"engine": "groovy",
+			"errorLabel": {
+				"en_US": "Only the inviting account manager or an admin can resend, while the application is invitation sent, registration in progress or expired."
+			},
+			"externalReferenceCode": "PM_VAL_INVITATION_RESEND",
+			"name": {
+				"en_US": "Resend allowed"
+			},
+			"script": "// Validation PM_VAL_INVITATION_RESEND on PM_OBJ_INVITATION (US-001 AC6).\n// A resend is an update that raises resendCount. It is allowed for the\n// inviting or assigned AM and for admins, while the application is\n// invitationSent, registrationInProgress or expired.\n\nimport com.liferay.portal.kernel.module.util.SystemBundleUtil\n\ndef service = { String name ->\n\tdef bundleContext = SystemBundleUtil.getBundleContext()\n\n\tbundleContext.getService(bundleContext.getServiceReference(name))\n}\n\nvalidationCriteriaMet = true\n\nlong self = (binding.variables.id ?: 0L) as long\n\nif (self == 0L) {\n\treturn\n}\n\ndef objectDefinitionLocalService = service(\"com.liferay.object.service.ObjectDefinitionLocalService\")\ndef objectEntryLocalService = service(\"com.liferay.object.service.ObjectEntryLocalService\")\ndef roleLocalService = service(\"com.liferay.portal.kernel.service.RoleLocalService\")\n\n// On add, id is already the new key but nothing is stored yet\n\ndef storedEntry = objectEntryLocalService.fetchObjectEntry(self)\n\nif (storedEntry == null) {\n\treturn\n}\n\ndef stored = objectEntryLocalService.getValues(storedEntry)\n\nif (((resendCount ?: 0) as int) == ((stored.resendCount ?: 0) as int)) {\n\treturn\n}\n\nlong companyId = storedEntry.getCompanyId()\nlong userId = com.liferay.portal.kernel.security.auth.PrincipalThreadLocal.getUserId()\n\nboolean admin = [\"Administrator\", \"Partner Portal Admin\"].any { roleLocalService.hasUserRole(userId, companyId, it, true) }\n\nlong applicationDefinitionId = objectDefinitionLocalService.getObjectDefinitionByExternalReferenceCode(\"PM_OBJ_APPLICATION\", companyId).getObjectDefinitionId()\n\ndef application = objectEntryLocalService.getObjectEntries(0L, applicationDefinitionId, -1, -1).collect { objectEntryLocalService.getValues(it) }.find {\n\t(it[\"r_invitationApplication_c_partnerInvitationId\"] ?: 0L) as long == self\n}\n\nboolean own = ((stored[\"r_invitationInvitedBy_userId\"] ?: 0L) as long == userId) || (application && ((application[\"r_applicationAssignedAM_userId\"] ?: 0L) as long == userId))\n\nvalidationCriteriaMet = application && (application.applicationStatus in [\"invitationSent\", \"registrationInProgress\", \"expired\"]) && (admin || (own && roleLocalService.hasUserRole(userId, companyId, \"Partner Account Manager\", true)))\n"
+		}
+	]
+}

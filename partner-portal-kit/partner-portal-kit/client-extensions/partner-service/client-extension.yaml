@@ -1,0 +1,49 @@
+assemble:
+  - fromTask: bootJar
+
+partner-service-oauth-headless-server:
+  .serviceAddress: localhost:58081
+  .serviceScheme: http
+  name: Partner Service Headless Server
+  # Service-to-Liferay calls: objects, accounts, users, workflow, notifications.
+  scopes:
+    - C_PartnerInvitation.everything
+    - C_PartnerApplication.everything
+    - C_ApplicationContact.everything
+    - C_POSLocation.everything
+    - C_ApplicationDocument.everything
+    - C_ReviewComment.everything
+    - C_StatusHistory.everything
+    - C_PartnerSettings.everything.read
+    - Liferay.Headless.Admin.User.everything
+    - Liferay.Headless.Admin.Workflow.everything
+    - Liferay.Headless.Delivery.everything
+    - Liferay.Notification.REST.everything
+  type: oAuthApplicationHeadlessServer
+
+partner-service-oauth-user-agent:
+  .serviceAddress: localhost:58081
+  .serviceScheme: http
+  name: Partner Service User Agent
+  # Signed-in staff calling partner-service from partner-admin-ui.
+  scopes:
+    - Liferay.Headless.Admin.User.everything.read
+  type: oAuthApplicationUserAgent
+
+partner-action-invitation-created:
+  name: Partner Invitation Created
+  oAuth2ApplicationExternalReferenceCode: partner-service-oauth-user-agent
+  resourcePath: /object/action/invitation-created
+  type: objectAction
+
+partner-action-application-updated:
+  name: Partner Application Updated
+  oAuth2ApplicationExternalReferenceCode: partner-service-oauth-user-agent
+  resourcePath: /object/action/application-updated
+  type: objectAction
+
+partner-workflow-action-review:
+  name: Partner Review Workflow Action
+  oAuth2ApplicationExternalReferenceCode: partner-service-oauth-user-agent
+  resourcePath: /workflow/action/review
+  type: workflowAction

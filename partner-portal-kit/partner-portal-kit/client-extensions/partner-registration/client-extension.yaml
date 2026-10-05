@@ -1,0 +1,16 @@
+assemble:
+  - from: build/static
+    into: static
+
+partner-registration:
+  cssURLs:
+    - css/main.*.css
+  friendlyURLMapping: partner-registration
+  htmlElementName: partner-registration
+  instanceable: false
+  name: Partner Registration
+  portletCategoryName: category.client-extensions
+  type: customElement
+  urls:
+    - js/main.*.js
+  useESM: true

@@ -1,0 +1,21 @@
+assemble:
+  - from: batch
+    into: batch
+
+partner-batch:
+  name: Partner Portal Objects and Templates
+  oAuthApplicationHeadlessServer: partner-batch-oauth-headless-server
+  type: batch
+
+partner-batch-oauth-headless-server:
+  .serviceAddress: localhost:8080
+  .serviceScheme: http
+  name: Partner Batch OAuth Application
+  # Batch import of picklists, object definitions, notification templates and the settings entry.
+  scopes:
+    - Liferay.Headless.Batch.Engine.everything
+    - Liferay.Headless.Admin.List.Type.everything
+    - Liferay.Object.Admin.REST.everything
+    - Liferay.Notification.REST.everything
+    - c_partnersettings.everything
+  type: oAuthApplicationHeadlessServer

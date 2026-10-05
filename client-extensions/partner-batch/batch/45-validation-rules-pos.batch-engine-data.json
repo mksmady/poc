@@ -1,0 +1,26 @@
+{
+	"configuration": {
+		"className": "com.liferay.object.admin.rest.dto.v1_0.ObjectValidationRule",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "INSERT",
+			"externalReferenceCode": "PM_OBJ_POS",
+			"importStrategy": "ON_ERROR_CONTINUE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"active": true,
+			"engine": "groovy",
+			"errorLabel": {
+				"en_US": "This application has been submitted and can no longer be changed."
+			},
+			"externalReferenceCode": "PM_VAL_POS_REGISTRATION",
+			"name": {
+				"en_US": "Registration page limits"
+			},
+			"script": "// Validation PM_VAL_<CHILD>_REGISTRATION on PM_OBJ_CONTACT, PM_OBJ_POS and\n// PM_OBJ_DOCUMENT (US-002 AC11): the \"Partner Registration Client\" user may\n// add or change a child only while its application can still be edited.\n// Deletes are not validated by Liferay; see docs/open-questions.md.\n\nimport com.liferay.portal.kernel.module.util.SystemBundleUtil\n\ndef service = { String name ->\n\tdef bundleContext = SystemBundleUtil.getBundleContext()\n\n\tbundleContext.getService(bundleContext.getServiceReference(name))\n}\n\nvalidationCriteriaMet = true\n\ndef roleLocalService = service(\"com.liferay.portal.kernel.service.RoleLocalService\")\n\nlong companyId = com.liferay.portal.kernel.util.PortalUtil.getDefaultCompanyId()\nlong userId = com.liferay.portal.kernel.security.auth.PrincipalThreadLocal.getUserId()\n\nif (!roleLocalService.hasUserRole(userId, companyId, \"Partner Registration Client\", true)) {\n\treturn\n}\n\ndef parentField = [\n\t\"r_applicationContacts_c_partnerApplicationId\",\n\t\"r_applicationDocuments_c_partnerApplicationId\",\n\t\"r_applicationPosLocations_c_partnerApplicationId\"\n].find { binding.variables.containsKey(it) }\n\nlong applicationId = parentField ? ((binding.variables[parentField] ?: 0L) as long) : 0L\n\nif (applicationId == 0L) {\n\tvalidationCriteriaMet = false\n\n\treturn\n}\n\ndef objectEntryLocalService = service(\"com.liferay.object.service.ObjectEntryLocalService\")\ndef application = objectEntryLocalService.fetchObjectEntry(applicationId)\n\nvalidationCriteriaMet = (application != null) && (objectEntryLocalService.getValues(application).applicationStatus in [\"invitationSent\", \"registrationInProgress\", \"revisionRequested\"])\n"
+		}
+	]
+}

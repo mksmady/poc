@@ -1,0 +1,324 @@
+{
+	"configuration": {
+		"className": "com.liferay.headless.admin.list.type.dto.v1_0.ListTypeDefinition",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "UPSERT",
+			"importStrategy": "ON_ERROR_FAIL",
+			"updateStrategy": "UPDATE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"externalReferenceCode": "PM_PL_APPLICATION_STATUS",
+			"name": "Partner Application Status",
+			"name_i18n": {
+				"en_US": "Partner Application Status"
+			},
+			"listTypeEntries": [
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_INVITATION_SENT",
+					"key": "invitationSent",
+					"name": "Invitation sent",
+					"name_i18n": {
+						"en_US": "Invitation sent"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_REGISTRATION_IN_PROGRESS",
+					"key": "registrationInProgress",
+					"name": "Registration in progress",
+					"name_i18n": {
+						"en_US": "Registration in progress"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_SUBMITTED",
+					"key": "submitted",
+					"name": "Submitted",
+					"name_i18n": {
+						"en_US": "Submitted"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_APPROVAL_PENDING",
+					"key": "approvalPending",
+					"name": "Approval pending",
+					"name_i18n": {
+						"en_US": "Approval pending"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_REVISION_REQUESTED",
+					"key": "revisionRequested",
+					"name": "Revision requested",
+					"name_i18n": {
+						"en_US": "Revision requested"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_UNDER_LEGAL_REVIEW",
+					"key": "underLegalReview",
+					"name": "Under legal review",
+					"name_i18n": {
+						"en_US": "Under legal review"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_CONTRACT_PENDING",
+					"key": "contractPending",
+					"name": "Contract pending",
+					"name_i18n": {
+						"en_US": "Contract pending"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_AUTHORIZED",
+					"key": "authorized",
+					"name": "Authorized",
+					"name_i18n": {
+						"en_US": "Authorized"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_REJECTED",
+					"key": "rejected",
+					"name": "Rejected",
+					"name_i18n": {
+						"en_US": "Rejected"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_TERMINATED",
+					"key": "terminated",
+					"name": "Terminated",
+					"name_i18n": {
+						"en_US": "Terminated"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_DEACTIVATED",
+					"key": "deactivated",
+					"name": "Deactivated",
+					"name_i18n": {
+						"en_US": "Deactivated"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_APPLICATION_STATUS_EXPIRED",
+					"key": "expired",
+					"name": "Expired",
+					"name_i18n": {
+						"en_US": "Expired"
+					}
+				}
+			]
+		},
+		{
+			"externalReferenceCode": "PM_PL_INVITATION_STATE",
+			"name": "Invitation State",
+			"name_i18n": {
+				"en_US": "Invitation State"
+			},
+			"listTypeEntries": [
+				{
+					"externalReferenceCode": "PM_PLE_INVITATION_STATE_ACTIVE",
+					"key": "active",
+					"name": "Active",
+					"name_i18n": {
+						"en_US": "Active"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_INVITATION_STATE_USED",
+					"key": "used",
+					"name": "Used",
+					"name_i18n": {
+						"en_US": "Used"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_INVITATION_STATE_REVOKED",
+					"key": "revoked",
+					"name": "Revoked",
+					"name_i18n": {
+						"en_US": "Revoked"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_INVITATION_STATE_EXPIRED",
+					"key": "expired",
+					"name": "Expired",
+					"name_i18n": {
+						"en_US": "Expired"
+					}
+				}
+			]
+		},
+		{
+			"externalReferenceCode": "PM_PL_REVIEW_STAGE",
+			"name": "Review Stage",
+			"name_i18n": {
+				"en_US": "Review Stage"
+			},
+			"listTypeEntries": [
+				{
+					"externalReferenceCode": "PM_PLE_REVIEW_STAGE_AM",
+					"key": "am",
+					"name": "AM",
+					"name_i18n": {
+						"en_US": "AM"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_REVIEW_STAGE_LEGAL",
+					"key": "legal",
+					"name": "Legal",
+					"name_i18n": {
+						"en_US": "Legal"
+					}
+				}
+			]
+		},
+		{
+			"externalReferenceCode": "PM_PL_CONTACT_ROLE",
+			"name": "Contact Role",
+			"name_i18n": {
+				"en_US": "Contact Role"
+			},
+			"listTypeEntries": [
+				{
+					"externalReferenceCode": "PM_PLE_CONTACT_ROLE_PRIMARY",
+					"key": "primary",
+					"name": "Primary",
+					"name_i18n": {
+						"en_US": "Primary"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_CONTACT_ROLE_FINANCE",
+					"key": "finance",
+					"name": "Finance",
+					"name_i18n": {
+						"en_US": "Finance"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_CONTACT_ROLE_TECHNICAL",
+					"key": "technical",
+					"name": "Technical",
+					"name_i18n": {
+						"en_US": "Technical"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_CONTACT_ROLE_OTHER",
+					"key": "other",
+					"name": "Other",
+					"name_i18n": {
+						"en_US": "Other"
+					}
+				}
+			]
+		},
+		{
+			"externalReferenceCode": "PM_PL_DOCUMENT_TYPE",
+			"name": "Document Type",
+			"name_i18n": {
+				"en_US": "Document Type"
+			},
+			"listTypeEntries": [
+				{
+					"externalReferenceCode": "PM_PLE_DOCUMENT_TYPE_TRADE_REGISTER",
+					"key": "tradeRegister",
+					"name": "Trade register",
+					"name_i18n": {
+						"en_US": "Trade register"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_DOCUMENT_TYPE_VAT_CERTIFICATE",
+					"key": "vatCertificate",
+					"name": "VAT certificate",
+					"name_i18n": {
+						"en_US": "VAT certificate"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_DOCUMENT_TYPE_BANK_LETTER",
+					"key": "bankLetter",
+					"name": "Bank letter",
+					"name_i18n": {
+						"en_US": "Bank letter"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_DOCUMENT_TYPE_CERTIFICATE",
+					"key": "certificate",
+					"name": "Certificate",
+					"name_i18n": {
+						"en_US": "Certificate"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_DOCUMENT_TYPE_SIGNED_CONTRACT",
+					"key": "signedContract",
+					"name": "Signed contract",
+					"name_i18n": {
+						"en_US": "Signed contract"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_DOCUMENT_TYPE_OTHER",
+					"key": "other",
+					"name": "Other",
+					"name_i18n": {
+						"en_US": "Other"
+					}
+				}
+			]
+		},
+		{
+			"externalReferenceCode": "PM_PL_POS_TYPE",
+			"name": "POS Type",
+			"name_i18n": {
+				"en_US": "POS Type"
+			},
+			"listTypeEntries": [
+				{
+					"externalReferenceCode": "PM_PLE_POS_TYPE_STORE",
+					"key": "store",
+					"name": "Store",
+					"name_i18n": {
+						"en_US": "Store"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_POS_TYPE_WAREHOUSE",
+					"key": "warehouse",
+					"name": "Warehouse",
+					"name_i18n": {
+						"en_US": "Warehouse"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_POS_TYPE_ONLINE",
+					"key": "online",
+					"name": "Online",
+					"name_i18n": {
+						"en_US": "Online"
+					}
+				},
+				{
+					"externalReferenceCode": "PM_PLE_POS_TYPE_OTHER",
+					"key": "other",
+					"name": "Other",
+					"name_i18n": {
+						"en_US": "Other"
+					}
+				}
+			]
+		}
+	]
+}

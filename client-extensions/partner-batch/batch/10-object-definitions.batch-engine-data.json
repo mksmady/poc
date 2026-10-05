@@ -1,0 +1,1404 @@
+{
+	"configuration": {
+		"className": "com.liferay.object.admin.rest.dto.v1_0.ObjectDefinition",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "UPSERT",
+			"importStrategy": "ON_ERROR_FAIL",
+			"updateStrategy": "UPDATE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_SETTINGS",
+			"label": {
+				"en_US": "Partner Settings"
+			},
+			"name": "PartnerSettings",
+			"objectFields": [
+				{
+					"businessType": "Integer",
+					"DBType": "Integer",
+					"externalReferenceCode": "PM_FLD_SETTINGS_INVITATION_EXPIRY_DAYS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Invitation Expiry Days"
+					},
+					"name": "invitationExpiryDays",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_SETTINGS_REMINDER_DAYS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Reminder Days"
+					},
+					"name": "reminderDays",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Integer",
+					"DBType": "Integer",
+					"externalReferenceCode": "PM_FLD_SETTINGS_REVIEW_SLA_DAYS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Review SLA Days"
+					},
+					"name": "reviewSlaDays",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Integer",
+					"DBType": "Integer",
+					"externalReferenceCode": "PM_FLD_SETTINGS_REVISION_LINK_DAYS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Revision Link Days"
+					},
+					"name": "revisionLinkDays",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Integer",
+					"DBType": "Integer",
+					"externalReferenceCode": "PM_FLD_SETTINGS_ACTIVATION_LINK_HOURS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Activation Link Hours"
+					},
+					"name": "activationLinkHours",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Integer",
+					"DBType": "Integer",
+					"externalReferenceCode": "PM_FLD_SETTINGS_MAX_UPLOAD_MB",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Max Upload MB"
+					},
+					"name": "maxUploadMb",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_SETTINGS_JOB_CRON",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Job Cron"
+					},
+					"name": "jobCron",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				}
+			],
+			"objectRelationships": [],
+			"pluralLabel": {
+				"en_US": "Partner Settings"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "reminderDays"
+		},
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_STATUS_HISTORY",
+			"label": {
+				"en_US": "Status History"
+			},
+			"name": "StatusHistory",
+			"objectFields": [
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_STATUS_HISTORY_FROM_STATUS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "From Status"
+					},
+					"name": "fromStatus",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_APPLICATION_STATUS"
+				},
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_STATUS_HISTORY_TO_STATUS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "To Status"
+					},
+					"name": "toStatus",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_APPLICATION_STATUS"
+				},
+				{
+					"businessType": "LongText",
+					"DBType": "Clob",
+					"externalReferenceCode": "PM_FLD_STATUS_HISTORY_REASON",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Reason"
+					},
+					"name": "reason",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "DateTime",
+					"DBType": "DateTime",
+					"externalReferenceCode": "PM_FLD_STATUS_HISTORY_CHANGED_AT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Changed At"
+					},
+					"name": "changedAt",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "timeStorage",
+							"value": "convertToUTC"
+						}
+					]
+				}
+			],
+			"objectRelationships": [],
+			"pluralLabel": {
+				"en_US": "Status Histories"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "toStatus"
+		},
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_CONTACT",
+			"label": {
+				"en_US": "Application Contact"
+			},
+			"name": "ApplicationContact",
+			"objectFields": [
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_CONTACT_FULL_NAME",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Full Name"
+					},
+					"name": "fullName",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_CONTACT_EMAIL",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Email"
+					},
+					"name": "email",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_CONTACT_PHONE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Phone"
+					},
+					"name": "phone",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_CONTACT_JOB_TITLE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Job Title"
+					},
+					"name": "jobTitle",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_CONTACT_ROLE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Role"
+					},
+					"name": "role",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_CONTACT_ROLE"
+				}
+			],
+			"objectRelationships": [],
+			"pluralLabel": {
+				"en_US": "Application Contacts"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "fullName"
+		},
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_POS",
+			"label": {
+				"en_US": "POS Location"
+			},
+			"name": "POSLocation",
+			"objectFields": [
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_POS_NAME",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Name"
+					},
+					"name": "name",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_POS_STREET",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Street"
+					},
+					"name": "street",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_POS_CITY",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "City"
+					},
+					"name": "city",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_POS_POSTAL_CODE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Postal Code"
+					},
+					"name": "postalCode",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_POS_COUNTRY",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Country"
+					},
+					"name": "country",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_POS_POS_TYPE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "POS Type"
+					},
+					"name": "posType",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_POS_TYPE"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_POS_CATEGORIES",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Categories"
+					},
+					"name": "categories",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				}
+			],
+			"objectRelationships": [],
+			"pluralLabel": {
+				"en_US": "POS Locations"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "name"
+		},
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_DOCUMENT",
+			"label": {
+				"en_US": "Application Document"
+			},
+			"name": "ApplicationDocument",
+			"objectFields": [
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_DOCUMENT_DOCUMENT_TYPE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Document Type"
+					},
+					"name": "documentType",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_DOCUMENT_TYPE"
+				},
+				{
+					"businessType": "Attachment",
+					"DBType": "Long",
+					"externalReferenceCode": "PM_FLD_DOCUMENT_FILE",
+					"indexed": false,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "File"
+					},
+					"name": "file",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "acceptedFileExtensions",
+							"value": "pdf, jpg, jpeg, png"
+						},
+						{
+							"name": "fileSource",
+							"value": "userComputer"
+						},
+						{
+							"name": "maximumFileSize",
+							"value": 10
+						},
+						{
+							"name": "showFilesInDocumentsAndMedia",
+							"value": false
+						}
+					]
+				},
+				{
+					"businessType": "LongText",
+					"DBType": "Clob",
+					"externalReferenceCode": "PM_FLD_DOCUMENT_NOTE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Note"
+					},
+					"name": "note",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				}
+			],
+			"objectRelationships": [],
+			"pluralLabel": {
+				"en_US": "Application Documents"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "documentType"
+		},
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_COMMENT",
+			"label": {
+				"en_US": "Review Comment"
+			},
+			"name": "ReviewComment",
+			"objectFields": [
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_COMMENT_STAGE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Stage"
+					},
+					"name": "stage",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_REVIEW_STAGE"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_COMMENT_SECTION",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Section"
+					},
+					"name": "section",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "LongText",
+					"DBType": "Clob",
+					"externalReferenceCode": "PM_FLD_COMMENT_BODY",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Body"
+					},
+					"name": "body",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				}
+			],
+			"objectRelationships": [],
+			"pluralLabel": {
+				"en_US": "Review Comments"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "section"
+		},
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_APPLICATION",
+			"label": {
+				"en_US": "Partner Application"
+			},
+			"name": "PartnerApplication",
+			"objectFields": [
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_APPLICATION_STATUS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Status"
+					},
+					"name": "applicationStatus",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "defaultValueType",
+							"value": "inputAsValue"
+						},
+						{
+							"name": "defaultValue",
+							"value": "invitationSent"
+						},
+						{
+							"name": "stateFlow",
+							"value": {
+								"objectStates": [
+									{
+										"key": "invitationSent",
+										"objectStateTransitions": [
+											{
+												"key": "registrationInProgress"
+											},
+											{
+												"key": "expired"
+											}
+										]
+									},
+									{
+										"key": "registrationInProgress",
+										"objectStateTransitions": [
+											{
+												"key": "expired"
+											},
+											{
+												"key": "submitted"
+											}
+										]
+									},
+									{
+										"key": "expired",
+										"objectStateTransitions": [
+											{
+												"key": "invitationSent"
+											}
+										]
+									},
+									{
+										"key": "submitted",
+										"objectStateTransitions": [
+											{
+												"key": "approvalPending"
+											},
+											{
+												"key": "underLegalReview"
+											}
+										]
+									},
+									{
+										"key": "approvalPending",
+										"objectStateTransitions": [
+											{
+												"key": "revisionRequested"
+											},
+											{
+												"key": "underLegalReview"
+											},
+											{
+												"key": "authorized"
+											}
+										]
+									},
+									{
+										"key": "underLegalReview",
+										"objectStateTransitions": [
+											{
+												"key": "revisionRequested"
+											},
+											{
+												"key": "contractPending"
+											},
+											{
+												"key": "rejected"
+											}
+										]
+									},
+									{
+										"key": "revisionRequested",
+										"objectStateTransitions": [
+											{
+												"key": "submitted"
+											}
+										]
+									},
+									{
+										"key": "contractPending",
+										"objectStateTransitions": [
+											{
+												"key": "authorized"
+											},
+											{
+												"key": "terminated"
+											}
+										]
+									},
+									{
+										"key": "authorized",
+										"objectStateTransitions": [
+											{
+												"key": "deactivated"
+											},
+											{
+												"key": "terminated"
+											}
+										]
+									},
+									{
+										"key": "deactivated",
+										"objectStateTransitions": [
+											{
+												"key": "authorized"
+											},
+											{
+												"key": "terminated"
+											}
+										]
+									},
+									{
+										"key": "rejected",
+										"objectStateTransitions": []
+									},
+									{
+										"key": "terminated",
+										"objectStateTransitions": []
+									}
+								]
+							}
+						}
+					],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_APPLICATION_STATUS",
+					"state": true
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_COMPANY_NAME",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Company Name"
+					},
+					"name": "companyName",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_REGISTRATION_NUMBER",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Registration Number"
+					},
+					"name": "registrationNumber",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_VAT_ID",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "VAT ID"
+					},
+					"name": "vatId",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_STREET",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Street"
+					},
+					"name": "street",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_CITY",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "City"
+					},
+					"name": "city",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_POSTAL_CODE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Postal Code"
+					},
+					"name": "postalCode",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_COUNTRY",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Country"
+					},
+					"name": "country",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_WEBSITE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Website"
+					},
+					"name": "website",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_EMPLOYEE_BAND",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Employee Band"
+					},
+					"name": "employeeBand",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "LongText",
+					"DBType": "Clob",
+					"externalReferenceCode": "PM_FLD_APPLICATION_QUESTIONNAIRE",
+					"indexed": false,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Questionnaire"
+					},
+					"name": "questionnaire",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Boolean",
+					"DBType": "Boolean",
+					"externalReferenceCode": "PM_FLD_APPLICATION_SANCTIONS_DECLARATION",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Sanctions Declaration"
+					},
+					"name": "sanctionsDeclaration",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Boolean",
+					"DBType": "Boolean",
+					"externalReferenceCode": "PM_FLD_APPLICATION_GDPR_CONSENT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "GDPR Consent"
+					},
+					"name": "gdprConsent",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "LongText",
+					"DBType": "Clob",
+					"externalReferenceCode": "PM_FLD_APPLICATION_COMPLIANCE_NOTES",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Compliance Notes"
+					},
+					"name": "complianceNotes",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "LongText",
+					"DBType": "Clob",
+					"externalReferenceCode": "PM_FLD_APPLICATION_CERTIFICATIONS",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Certifications"
+					},
+					"name": "certifications",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_REQUESTED_CATEGORIES",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Requested Categories"
+					},
+					"name": "requestedCategories",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Boolean",
+					"DBType": "Boolean",
+					"externalReferenceCode": "PM_FLD_APPLICATION_EXISTING_COMPANY",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Existing Company"
+					},
+					"name": "existingCompany",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Boolean",
+					"DBType": "Boolean",
+					"externalReferenceCode": "PM_FLD_APPLICATION_WATCHLIST_MATCH",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Watchlist Match"
+					},
+					"name": "watchlistMatch",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_REVISION_REQUESTED_BY",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Revision Requested By"
+					},
+					"name": "revisionRequestedBy",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_REVIEW_STAGE"
+				},
+				{
+					"businessType": "DateTime",
+					"DBType": "DateTime",
+					"externalReferenceCode": "PM_FLD_APPLICATION_SUBMITTED_AT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Submitted At"
+					},
+					"name": "submittedAt",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "timeStorage",
+							"value": "convertToUTC"
+						}
+					]
+				},
+				{
+					"businessType": "DateTime",
+					"DBType": "DateTime",
+					"externalReferenceCode": "PM_FLD_APPLICATION_AUTHORIZED_AT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Authorized At"
+					},
+					"name": "authorizedAt",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "timeStorage",
+							"value": "convertToUTC"
+						}
+					]
+				},
+				{
+					"businessType": "Boolean",
+					"DBType": "Boolean",
+					"externalReferenceCode": "PM_FLD_APPLICATION_CONTRACT_SIGNED",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Contract Signed"
+					},
+					"name": "contractSigned",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Date",
+					"DBType": "Date",
+					"externalReferenceCode": "PM_FLD_APPLICATION_CONTRACT_SIGNED_DATE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Contract Signed Date"
+					},
+					"name": "contractSignedDate",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_APPLICATION_CONTRACT_REFERENCE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Contract Reference"
+					},
+					"name": "contractReference",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "LongText",
+					"DBType": "Clob",
+					"externalReferenceCode": "PM_FLD_APPLICATION_STATUS_REASON",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Status Reason"
+					},
+					"name": "statusReason",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				}
+			],
+			"objectRelationships": [
+				{
+					"deletionType": "prevent",
+					"externalReferenceCode": "PM_REL_APPLICATION_CONTACT",
+					"label": {
+						"en_US": "Contacts"
+					},
+					"name": "applicationContacts",
+					"objectDefinitionExternalReferenceCode1": "PM_OBJ_APPLICATION",
+					"objectDefinitionExternalReferenceCode2": "PM_OBJ_CONTACT",
+					"type": "oneToMany"
+				},
+				{
+					"deletionType": "prevent",
+					"externalReferenceCode": "PM_REL_APPLICATION_POS",
+					"label": {
+						"en_US": "POS Locations"
+					},
+					"name": "applicationPosLocations",
+					"objectDefinitionExternalReferenceCode1": "PM_OBJ_APPLICATION",
+					"objectDefinitionExternalReferenceCode2": "PM_OBJ_POS",
+					"type": "oneToMany"
+				},
+				{
+					"deletionType": "prevent",
+					"externalReferenceCode": "PM_REL_APPLICATION_DOCUMENT",
+					"label": {
+						"en_US": "Documents"
+					},
+					"name": "applicationDocuments",
+					"objectDefinitionExternalReferenceCode1": "PM_OBJ_APPLICATION",
+					"objectDefinitionExternalReferenceCode2": "PM_OBJ_DOCUMENT",
+					"type": "oneToMany"
+				},
+				{
+					"deletionType": "prevent",
+					"externalReferenceCode": "PM_REL_APPLICATION_COMMENT",
+					"label": {
+						"en_US": "Review Comments"
+					},
+					"name": "applicationComments",
+					"objectDefinitionExternalReferenceCode1": "PM_OBJ_APPLICATION",
+					"objectDefinitionExternalReferenceCode2": "PM_OBJ_COMMENT",
+					"type": "oneToMany"
+				},
+				{
+					"deletionType": "prevent",
+					"externalReferenceCode": "PM_REL_APPLICATION_STATUS_HISTORY",
+					"label": {
+						"en_US": "Status History"
+					},
+					"name": "applicationStatusHistory",
+					"objectDefinitionExternalReferenceCode1": "PM_OBJ_APPLICATION",
+					"objectDefinitionExternalReferenceCode2": "PM_OBJ_STATUS_HISTORY",
+					"type": "oneToMany"
+				}
+			],
+			"pluralLabel": {
+				"en_US": "Partner Applications"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "companyName"
+		},
+		{
+			"active": true,
+			"enableCategorization": false,
+			"enableComments": false,
+			"enableObjectEntryHistory": false,
+			"externalReferenceCode": "PM_OBJ_INVITATION",
+			"label": {
+				"en_US": "Partner Invitation"
+			},
+			"name": "PartnerInvitation",
+			"objectFields": [
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_INVITATION_EMAIL",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Email"
+					},
+					"name": "email",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_INVITATION_FIRST_NAME",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "First Name"
+					},
+					"name": "firstName",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_INVITATION_LAST_NAME",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Last Name"
+					},
+					"name": "lastName",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [],
+					"indexedLanguageId": "en_US"
+				},
+				{
+					"businessType": "Text",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_INVITATION_TOKEN_HASH",
+					"indexed": false,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Token Hash"
+					},
+					"name": "tokenHash",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "DateTime",
+					"DBType": "DateTime",
+					"externalReferenceCode": "PM_FLD_INVITATION_EXPIRES_AT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Expires At"
+					},
+					"name": "expiresAt",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "timeStorage",
+							"value": "convertToUTC"
+						}
+					]
+				},
+				{
+					"businessType": "DateTime",
+					"DBType": "DateTime",
+					"externalReferenceCode": "PM_FLD_INVITATION_SENT_AT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Sent At"
+					},
+					"name": "sentAt",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "timeStorage",
+							"value": "convertToUTC"
+						}
+					]
+				},
+				{
+					"businessType": "DateTime",
+					"DBType": "DateTime",
+					"externalReferenceCode": "PM_FLD_INVITATION_LAST_REMINDER_AT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Last Reminder At"
+					},
+					"name": "lastReminderAt",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "timeStorage",
+							"value": "convertToUTC"
+						}
+					]
+				},
+				{
+					"businessType": "Integer",
+					"DBType": "Integer",
+					"externalReferenceCode": "PM_FLD_INVITATION_RESEND_COUNT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Resend Count"
+					},
+					"name": "resendCount",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Integer",
+					"DBType": "Integer",
+					"externalReferenceCode": "PM_FLD_INVITATION_REMINDER_COUNT",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "Reminder Count"
+					},
+					"name": "reminderCount",
+					"required": false,
+					"system": false,
+					"objectFieldSettings": []
+				},
+				{
+					"businessType": "Picklist",
+					"DBType": "String",
+					"externalReferenceCode": "PM_FLD_INVITATION_STATE",
+					"indexed": true,
+					"indexedAsKeyword": false,
+					"label": {
+						"en_US": "State"
+					},
+					"name": "state",
+					"required": true,
+					"system": false,
+					"objectFieldSettings": [
+						{
+							"name": "defaultValueType",
+							"value": "inputAsValue"
+						},
+						{
+							"name": "defaultValue",
+							"value": "active"
+						}
+					],
+					"indexedLanguageId": "en_US",
+					"listTypeDefinitionExternalReferenceCode": "PM_PL_INVITATION_STATE"
+				}
+			],
+			"objectRelationships": [
+				{
+					"deletionType": "prevent",
+					"externalReferenceCode": "PM_REL_INVITATION_APPLICATION",
+					"label": {
+						"en_US": "Application"
+					},
+					"name": "invitationApplication",
+					"objectDefinitionExternalReferenceCode1": "PM_OBJ_INVITATION",
+					"objectDefinitionExternalReferenceCode2": "PM_OBJ_APPLICATION",
+					"type": "oneToMany"
+				}
+			],
+			"pluralLabel": {
+				"en_US": "Partner Invitations"
+			},
+			"portlet": false,
+			"scope": "company",
+			"status": {
+				"code": 0
+			},
+			"titleObjectFieldName": "email"
+		}
+	]
+}

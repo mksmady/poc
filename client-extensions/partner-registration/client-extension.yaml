@@ -1,0 +1,19 @@
+assemble:
+  - from: build/static
+    into: static
+
+# Guests use the Object API as the "Partner Registration Client" user (basic auth). Its user,
+# password and upload folder are build-time settings from .env.local, written by
+# tools/partner-setup.mjs (docs/open-questions.md 29).
+partner-registration:
+  cssURLs:
+    - css/main.*.css
+  friendlyURLMapping: partner-registration
+  htmlElementName: partner-registration
+  instanceable: false
+  name: Partner Registration
+  portletCategoryName: category.client-extensions
+  type: customElement
+  urls:
+    - js/main.*.js
+  useESM: true

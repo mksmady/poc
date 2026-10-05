@@ -1,0 +1,38 @@
+{
+	"configuration": {
+		"className": "com.liferay.object.admin.rest.dto.v1_0.ObjectValidationRule",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "INSERT",
+			"externalReferenceCode": "PM_OBJ_APPLICATION",
+			"importStrategy": "ON_ERROR_CONTINUE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"active": true,
+			"engine": "groovy",
+			"errorLabel": {
+				"en_US": "This application has been submitted and can no longer be changed."
+			},
+			"externalReferenceCode": "PM_VAL_APPLICATION_REGISTRATION",
+			"name": {
+				"en_US": "Registration page limits"
+			},
+			"script": "// Validation PM_VAL_APPLICATION_REGISTRATION on PM_OBJ_APPLICATION (US-002\n// AC11). Limits the \"Partner Registration Client\" user, whose password the\n// registration page carries: it may edit an application only while it is\n// invitationSent, registrationInProgress or revisionRequested, and may only\n// move it to registrationInProgress or submitted. The routing that follows a\n// submit (submitted to a review stage) is allowed because\n// application-status-changed.groovy runs as the same user.\n\nimport com.liferay.portal.kernel.module.util.SystemBundleUtil\n\ndef service = { String name ->\n\tdef bundleContext = SystemBundleUtil.getBundleContext()\n\n\tbundleContext.getService(bundleContext.getServiceReference(name))\n}\n\nvalidationCriteriaMet = true\n\ndef objectEntryLocalService = service(\"com.liferay.object.service.ObjectEntryLocalService\")\ndef roleLocalService = service(\"com.liferay.portal.kernel.service.RoleLocalService\")\n\nlong companyId = com.liferay.portal.kernel.util.PortalUtil.getDefaultCompanyId()\nlong userId = com.liferay.portal.kernel.security.auth.PrincipalThreadLocal.getUserId()\n\nif (!roleLocalService.hasUserRole(userId, companyId, \"Partner Registration Client\", true)) {\n\treturn\n}\n\nlong self = (binding.variables.id ?: 0L) as long\n\n// On add, id is already the new key but nothing is stored yet; the\n// registration user may not create applications\n\ndef storedEntry = (self == 0L) ? null : objectEntryLocalService.fetchObjectEntry(self)\n\nif (storedEntry == null) {\n\tvalidationCriteriaMet = false\n\n\treturn\n}\n\n// The entry already holds the submitted values while rules run, so the\n// status before this save is the latest StatusHistory row (every change\n// writes one, see application-status-changed.groovy)\n\ndef objectDefinitionLocalService = service(\"com.liferay.object.service.ObjectDefinitionLocalService\")\nlong historyDefinitionId = objectDefinitionLocalService.getObjectDefinitionByExternalReferenceCode(\"PM_OBJ_STATUS_HISTORY\", companyId).getObjectDefinitionId()\n\ndef lastRow = objectEntryLocalService.getObjectEntries(0L, historyDefinitionId, -1, -1).findAll {\n\t(objectEntryLocalService.getValues(it)[\"r_applicationStatusHistory_c_partnerApplicationId\"] ?: 0L) as long == self\n}.max { it.getObjectEntryId() }\n\nString stored = lastRow ? objectEntryLocalService.getValues(lastRow).toStatus : objectEntryLocalService.getValues(storedEntry).applicationStatus\nString next = applicationStatus\n\nif ((stored == \"submitted\") && (next in [\"approvalPending\", \"underLegalReview\"])) {\n\treturn\n}\n\nvalidationCriteriaMet = (stored in [\"invitationSent\", \"registrationInProgress\", \"revisionRequested\"]) && (next in [stored, \"registrationInProgress\", \"submitted\"])\n"
+		},
+		{
+			"active": true,
+			"engine": "groovy",
+			"errorLabel": {
+				"en_US": "The application is not complete. Check every step and submit again."
+			},
+			"externalReferenceCode": "PM_VAL_APPLICATION_SUBMIT",
+			"name": {
+				"en_US": "Complete on submit"
+			},
+			"script": "// Validation PM_VAL_APPLICATION_SUBMIT on PM_OBJ_APPLICATION (US-002 AC10):\n// an application moves to submitted only when everything required is there.\n// The wizard checks the same rules first and shows them field by field.\n\nimport com.liferay.portal.kernel.module.util.SystemBundleUtil\n\ndef service = { String name ->\n\tdef bundleContext = SystemBundleUtil.getBundleContext()\n\n\tbundleContext.getService(bundleContext.getServiceReference(name))\n}\n\nvalidationCriteriaMet = true\n\nlong self = (binding.variables.id ?: 0L) as long\n\nif ((applicationStatus != \"submitted\") || (self == 0L)) {\n\treturn\n}\n\ndef objectDefinitionLocalService = service(\"com.liferay.object.service.ObjectDefinitionLocalService\")\ndef objectEntryLocalService = service(\"com.liferay.object.service.ObjectEntryLocalService\")\n\ndef storedEntry = objectEntryLocalService.fetchObjectEntry(self)\n\nif (storedEntry == null) {\n\treturn\n}\n\nlong companyId = storedEntry.getCompanyId()\n\n// The entry already holds the new values while rules run; the status before\n// this save is the latest StatusHistory row. Only a move into submitted is\n// checked, not later saves of a submitted application\n\nlong historyDefinitionId = objectDefinitionLocalService.getObjectDefinitionByExternalReferenceCode(\"PM_OBJ_STATUS_HISTORY\", companyId).getObjectDefinitionId()\n\ndef lastRow = objectEntryLocalService.getObjectEntries(0L, historyDefinitionId, -1, -1).findAll {\n\t(objectEntryLocalService.getValues(it)[\"r_applicationStatusHistory_c_partnerApplicationId\"] ?: 0L) as long == self\n}.max { it.getObjectEntryId() }\n\nif (lastRow && (objectEntryLocalService.getValues(lastRow).toStatus == \"submitted\")) {\n\treturn\n}\n\ndef children = { String erc, String field ->\n\tlong definitionId = objectDefinitionLocalService.getObjectDefinitionByExternalReferenceCode(erc, companyId).getObjectDefinitionId()\n\n\tobjectEntryLocalService.getObjectEntries(0L, definitionId, -1, -1).collect { objectEntryLocalService.getValues(it) }.findAll {\n\t\t(it[field] ?: 0L) as long == self\n\t}\n}\n\ndef filled = { value -> (value != null) && !String.valueOf(value).trim().isEmpty() }\n\nboolean company = [companyName, registrationNumber, vatId, street, city, postalCode, website, employeeBand].every { filled(it) } && (String.valueOf(country) ==~ /[A-Za-z]{2}/)\nboolean compliance = (gdprConsent == true) && (sanctionsDeclaration == true)\nboolean questionnaireDone = filled(questionnaire) && questionnaire.contains(\"businessType\")\n\nboolean primaryContact = children(\"PM_OBJ_CONTACT\", \"r_applicationContacts_c_partnerApplicationId\").any { it.role == \"primary\" }\n\ndef locations = children(\"PM_OBJ_POS\", \"r_applicationPosLocations_c_partnerApplicationId\")\nboolean posDone = !locations.isEmpty() && locations.every { filled(it.name) && filled(it.street) && filled(it.city) && filled(it.country) && filled(it.posType) && filled(it.categories) }\n\ndef documentTypes = children(\"PM_OBJ_DOCUMENT\", \"r_applicationDocuments_c_partnerApplicationId\").collect { it.documentType } as Set\nboolean documents = documentTypes.containsAll([\"tradeRegister\", \"vatCertificate\"])\n\nvalidationCriteriaMet = company && compliance && questionnaireDone && primaryContact && posDone && documents\n"
+		}
+	]
+}

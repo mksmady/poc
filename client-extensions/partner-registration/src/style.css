@@ -1,0 +1,111 @@
+/* Clay classes come from the portal theme; only layout tweaks here. */
+
+.partner-registration fieldset.pr-plain {
+	border: 0;
+	margin: 0;
+	min-width: 0;
+	padding: 0;
+}
+
+.partner-registration .pr-grid {
+	display: grid;
+	gap: 0 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.partner-registration .pr-steps {
+	display: flex;
+	gap: 0.25rem;
+	list-style: none;
+	margin: 0 0 1rem;
+	overflow-x: auto;
+	padding: 0;
+}
+
+.partner-registration .pr-step {
+	align-items: center;
+	border-bottom: 3px solid transparent;
+	display: flex;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	white-space: nowrap;
+}
+
+.partner-registration .pr-step.active {
+	border-bottom-color: currentColor;
+	font-weight: 600;
+}
+
+.partner-registration .pr-step.has-error {
+	color: var(--danger, #da1414);
+}
+
+.partner-registration .pr-step-number {
+	align-items: center;
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	display: inline-flex;
+	font-size: 0.75rem;
+	height: 1.5rem;
+	justify-content: center;
+	width: 1.5rem;
+}
+
+.partner-registration .pr-item {
+	border: 1px solid var(--gray-300, #e7e7ed);
+	border-radius: 0.5rem;
+	margin-bottom: 1rem;
+	padding: 1rem;
+}
+
+.partner-registration .pr-legend {
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+.partner-registration .pr-footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: space-between;
+}
+
+.partner-registration .pr-footer-end {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.partner-registration .pr-document {
+	align-items: center;
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+}
+
+.partner-registration .pr-review-head {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.partner-registration .pr-review-section {
+	border-bottom: 1px solid var(--gray-300, #e7e7ed);
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+}
+
+.partner-registration .pr-row {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: minmax(8rem, 1fr) 2fr;
+}
+
+.partner-registration .pr-row dd {
+	margin-bottom: 0.25rem;
+	overflow-wrap: anywhere;
+}
+
+.partner-registration .pr-loading {
+	padding: 2rem 0;
+	text-align: center;
+}

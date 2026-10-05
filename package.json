@@ -1,0 +1,9 @@
+{
+	"private": true,
+	"workspaces": {
+		"packages": [
+			"client-extensions\\partner-admin-ui",
+			"client-extensions\\partner-registration"
+		]
+	}
+}

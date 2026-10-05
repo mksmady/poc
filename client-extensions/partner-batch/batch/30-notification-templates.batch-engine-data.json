@@ -1,0 +1,420 @@
+{
+	"configuration": {
+		"className": "com.liferay.notification.rest.dto.v1_0.NotificationTemplate",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "UPSERT",
+			"importStrategy": "ON_ERROR_FAIL",
+			"updateStrategy": "UPDATE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>[%AM_NAME%] has invited you to register as a partner.</p><p><a href=\"[%LINK%]\">Start your registration</a></p><p>This link is personal and valid until [%EXPIRES_AT%].</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_INVITE",
+			"name": "Invitation",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "You are invited to become a partner"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>Your partner registration is not complete yet. Please continue with the personal link in your invitation email from [%AM_NAME%].</p><p>The link expires on [%EXPIRES_AT%]. If you cannot find the email, ask [%AM_NAME%] to resend the invitation.</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_INVITE_REMINDER",
+			"name": "Invitation reminder",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Reminder: complete your partner registration"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>The invitation for [%PARTNER_NAME%] ([%PARTNER_EMAIL%]) expired on [%EXPIRES_AT%] without a submitted application.</p><p>You can resend it from the <a href=\"[%LINK%]\">invitations dashboard</a>.</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_INVITE_EXPIRED",
+			"name": "Invitation expired",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Invitation expired: [%PARTNER_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>The partner application for [%COMPANY_NAME%] has been submitted and is now under review.</p><p>[%MESSAGE%]</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_SUBMITTED",
+			"name": "Application submitted",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Application received: [%COMPANY_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>We need some changes to the application for [%COMPANY_NAME%] before we can continue:</p>[%COMMENTS%]<p><a href=\"[%LINK%]\">Update your application</a> (valid until [%EXPIRES_AT%]).</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_REVISION",
+			"name": "Revision requested",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Changes needed in your partner application"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>The application for [%COMPANY_NAME%] passed the account manager review and is now in legal review.</p><p>[%MESSAGE%]</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_TO_LEGAL",
+			"name": "Sent to legal review",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Application in legal review: [%COMPANY_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>The application for [%COMPANY_NAME%] has been approved by legal. The next step is the partner contract; your account manager [%AM_NAME%] will contact you.</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_CONTRACT_PENDING",
+			"name": "Contract pending",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Contract pending: [%COMPANY_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>[%COMPANY_NAME%] is now an authorized partner.</p><p><a href=\"[%LINK%]\">Set your password</a> (valid until [%EXPIRES_AT%]).</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_APPROVED",
+			"name": "Partner authorized",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Welcome aboard: your partner account for [%COMPANY_NAME%] is ready"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>Your partner account is active. You can sign in at <a href=\"[%LINK%]\">[%LINK%]</a> to browse the product catalog.</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_WELCOME",
+			"name": "Welcome",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Welcome to the partner portal"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>Hello [%PARTNER_NAME%],</p><p>We are sorry to inform you that the partner application for [%COMPANY_NAME%] was not approved.</p><p>Reason: [%REASON%]</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_REJECTED",
+			"name": "Application rejected",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Your partner application for [%COMPANY_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>The partnership with [%COMPANY_NAME%] has been terminated.</p><p>Reason: [%REASON%]</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_TERMINATED",
+			"name": "Partnership terminated",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Partnership terminated: [%COMPANY_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>The partner account for [%COMPANY_NAME%] has been [%ACTION%].</p><p>[%REASON%]</p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_DEACTIVATED",
+			"name": "Partner deactivated or reactivated",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Partner account [%ACTION%]: [%COMPANY_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>The application for [%COMPANY_NAME%] has been waiting [%DAYS%] days in [%STATUS%] (SLA: [%SLA_DAYS%] days).</p><p><a href=\"[%LINK%]\">Open the review</a></p>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_SLA_REMINDER",
+			"name": "Review SLA reminder",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Review overdue: [%COMPANY_NAME%]"
+			},
+			"type": "email"
+		},
+		{
+			"attachmentObjectFieldExternalReferenceCodes": [],
+			"body": {
+				"en_US": "<p>[%MESSAGE%]</p><pre>[%DETAILS%]</pre>"
+			},
+			"description": "Rendered and sent by partner-service; see docs/notifications.md.",
+			"editorType": "richText",
+			"externalReferenceCode": "PM_ADMIN_ALERT",
+			"name": "Administrator alert",
+			"recipientType": "email",
+			"recipients": [
+				{
+					"bcc": "",
+					"cc": "",
+					"from": "noreply@partnerportal.local",
+					"fromName": {
+						"en_US": "Partner Portal"
+					},
+					"singleRecipient": false,
+					"to": {
+						"en_US": "[%RECIPIENT_EMAIL%]"
+					}
+				}
+			],
+			"subject": {
+				"en_US": "Partner portal alert: [%SUBJECT%]"
+			},
+			"type": "email"
+		}
+	]
+}

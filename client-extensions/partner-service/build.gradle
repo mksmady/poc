@@ -1,0 +1,58 @@
+buildscript {
+	dependencies {
+		classpath group: "org.springframework.boot", name: "spring-boot-gradle-plugin", version: "2.7.18"
+	}
+
+	repositories {
+		maven {
+			url "https://repository-cdn.liferay.com/nexus/content/groups/public"
+		}
+	}
+}
+
+apply plugin: "java-library"
+apply plugin: "org.springframework.boot"
+
+// The DXP BOM resolves Liferay utility jars built for Java 17, so compile with a JDK 21 toolchain
+// for a Java 17 runtime. Spring Boot 2.7.18 (as in the 2024.Q1 samples) supports both.
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(11)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 11
+}
+
+dependencies {
+	implementation group: "com.liferay", name: "com.liferay.client.extension.util.spring.boot", version: "1.0.28"
+	implementation group: "com.liferay", name: "org.apache.commons.logging", version: "1.2.LIFERAY-PATCHED-2"
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-actuator", version: "2.7.18"
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-oauth2-client", version: "2.7.18"
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-oauth2-resource-server", version: "2.7.18"
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-validation", version: "2.7.18"
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-web", version: "2.7.18"
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-webflux", version: "2.7.18"
+
+	testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test", version: "2.7.18"
+	testImplementation group: "org.springframework.security", name: "spring-security-test", version: "5.8.8"
+}
+
+repositories {
+	maven {
+		url "https://repository-cdn.liferay.com/nexus/content/groups/public"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+// Local run: read the OAuth credentials and DXP address Liferay writes to the bundle's routes folder.
+bootRun {
+	def liferayHome = rootProject.findProperty("liferay.workspace.home.dir") ?: "${rootProject.projectDir}/bundles"
+
+	environment "LIFERAY_ROUTES_CLIENT_EXTENSION", "${liferayHome}/routes/default/${project.name}"
+	environment "LIFERAY_ROUTES_DXP", "${liferayHome}/routes/default/dxp"
+}

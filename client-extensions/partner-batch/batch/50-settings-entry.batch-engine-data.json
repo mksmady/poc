@@ -1,0 +1,24 @@
+{
+	"configuration": {
+		"className": "com.liferay.object.rest.dto.v1_0.ObjectEntry",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "INSERT",
+			"importStrategy": "ON_ERROR_CONTINUE",
+			"updateStrategy": "UPDATE"
+		},
+		"taskItemDelegateName": "C_PartnerSettings"
+	},
+	"items": [
+		{
+			"externalReferenceCode": "PM_SETTINGS_DEFAULT",
+			"invitationExpiryDays": 30,
+			"reminderDays": "7,21,27",
+			"reviewSlaDays": 5,
+			"revisionLinkDays": 14,
+			"activationLinkHours": 72,
+			"maxUploadMb": 10,
+			"jobCron": "0 0 2 * * *"
+		}
+	]
+}

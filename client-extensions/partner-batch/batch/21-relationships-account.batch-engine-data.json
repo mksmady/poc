@@ -1,0 +1,25 @@
+{
+	"configuration": {
+		"className": "com.liferay.object.admin.rest.dto.v1_0.ObjectRelationship",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "INSERT",
+			"externalReferenceCode": "L_ACCOUNT",
+			"importStrategy": "ON_ERROR_CONTINUE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"deletionType": "disassociate",
+			"externalReferenceCode": "PM_REL_ACCOUNT_APPLICATION",
+			"label": {
+				"en_US": "Account"
+			},
+			"name": "applicationAccount",
+			"objectDefinitionExternalReferenceCode1": "L_ACCOUNT",
+			"objectDefinitionExternalReferenceCode2": "PM_OBJ_APPLICATION",
+			"type": "oneToMany"
+		}
+	]
+}

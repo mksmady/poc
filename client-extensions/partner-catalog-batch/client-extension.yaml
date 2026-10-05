@@ -1,0 +1,18 @@
+assemble:
+  - from: batch
+    into: batch
+
+partner-catalog-batch:
+  name: Partner Catalog One-time Import
+  oAuthApplicationHeadlessServer: partner-catalog-oauth-headless-server
+  type: batch
+
+partner-catalog-oauth-headless-server:
+  .serviceAddress: localhost:8080
+  .serviceScheme: http
+  name: Partner Catalog Import OAuth Application
+  scopes:
+    - Liferay.Headless.Batch.Engine.everything
+    - Liferay.Headless.Admin.Taxonomy.everything
+    - Liferay.Headless.Commerce.Admin.Catalog.everything
+  type: oAuthApplicationHeadlessServer
